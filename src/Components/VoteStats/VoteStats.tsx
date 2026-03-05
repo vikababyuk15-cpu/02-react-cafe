@@ -1,22 +1,27 @@
 import css from './VoteStats.module.css';
 
-// Описываем, какие цифры придут в компонент
-interface VoteStatsProps {
+export interface Votes {
   good: number;
   neutral: number;
   bad: number;
-  total: number;
-  positive: number;
 }
 
-const VoteStats = ({ good, neutral, bad, total, positive }: VoteStatsProps) => {
+
+interface VoteStatsProps {
+  votes: Votes;       
+  totalVotes: number; 
+  positiveRate: number; 
+}
+
+
+const VoteStats = ({ votes, totalVotes, positiveRate }: VoteStatsProps) => {
   return (
     <ul className={css.list}>
-      <li className={css.item}>Good: {good}</li>
-      <li className={css.item}>Neutral: {neutral}</li>
-      <li className={css.item}>Bad: {bad}</li>
-      <li className={css.item}>Total: {total}</li>
-      <li className={css.item}>Positive: {positive}%</li>
+      <li className={css.item}>Good: {votes.good}</li>
+      <li className={css.item}>Neutral: {votes.neutral}</li>
+      <li className={css.item}>Bad: {votes.bad}</li>
+      <li className={css.item}>Total: {totalVotes}</li>
+      <li className={css.item}>Positive: {positiveRate}%</li>
     </ul>
   );
 };

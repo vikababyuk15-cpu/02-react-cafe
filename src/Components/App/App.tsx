@@ -40,18 +40,15 @@ function App() {
         onReset={resetVotes} 
         canReset={totalVotes > 0} 
       />
-
-      {totalVotes > 0 ? (
-        <VoteStats 
-          good={votes.good} 
-          neutral={votes.neutral} 
-          bad={votes.bad} 
-          total={totalVotes} 
-          positive={positiveRate} 
-        />
-      ) : (
-        <Notification />
-      )}
+{totalVotes > 0 ? (
+  <VoteStats 
+    votes={votes}              
+    totalVotes={totalVotes}  
+    positiveRate={positiveRate} 
+  />
+) : (
+  <Notification />
+)}
     </div>
   );
 }
